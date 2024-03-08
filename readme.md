@@ -4,30 +4,77 @@
 
 ## WBS
 
-* 데이터베이스 스키마 및 중요 변수
-    * users
-        * id : 
-        * username : 
+* WBS
+```mermaid
+gantt
+    title 운동 & 식단 blog
+    dateFormat  YYYY-MM-DD
+    section 계획
+    프로젝트 구상        :done,     des1, 2024-03-07, 1d
+    WBS 작성            :done,     des1, 2024-03-08, 1d
+ 
+    section 설계
+    ERD 구상 및 작성     :done,     des1, 2024-03-08, 1d
+    관계 정리            :done,     des1, 2024-03-08, 1d 
+    가상환경 기본 세팅    :done,     des1, 2024-03-09, 2d
 
-* URL
-|url|||
+    section 개발
+    app/urls.py 작성    :done,     des1, 2024-03-09, 2d
+    app/veiws.py 작성   :done,     des1, 2024-03-09, 3d
 
-/                           # 메인
-/blog/                      # 블로그 리스트
-/blog/create/               # 블로그 작성
-/blog/update/<int:pk>/      # 로그인한 사용자만 보기 가능, 자신의 글만 업데이트 가능.(자신의 글에서 수정하기 버튼 노출)
-/blog/delete/<int:pk>/      # 로그인한 사용자만 보기 가능, 자신의 글만 삭제 가능.(자신의 글에서 삭제하기 버튼 노출)
-/blog/category              # 카테고리
-/blog/category/<str:tag>/   # 해당 카테고리가 달린 목록을 가져와야 합니다.
-/blog/?q='keyword'          # 해당 키워드가 포함된 title, content가 있는 목록을 가져와야 합니다.
-/accounts/signup/           # 회원가입
-/accounts/login/            # 로그인
-/accounts/logout/           # 로그인한 사용자만 보기 가능
-/accounts/profile/          # 로그인한 사용자만 보기 가능
+    section UI 제작 및 구현
+    부트스트랩 선정      :done,     des1, 2024-03-12, 1d
+    index.html 수정     :done,     des1, 2024-03-12, 2d
+    script.js 개발      :done,     des1, 2024-03-12, 2d
 
-* 와이어프레임
-|메인화면||
-|카테고리화면||
-|포스트화면||
+    section 테스트 및 검토
+    테스트             :done,     des1, 2024-03-13, 1d
+```
 
-* 작동이미지
+* ERD
+```mermaid
+erDiagram
+    MAIN ||--o{ EXERCISES : "contains"
+    MAIN ||--o{ COOK : "contains"
+    EXERCISES ||--o{ EXERCISES_POST : "places"
+    COOK ||--o{ COOK_POST : "places"
+    USER ||--o{ EXERCISES_POST : "write"
+    USER ||--o{ COOK_POST : "write"
+    USER ||--|| PROFILE : "onws"
+
+    USER {
+        int id PK "Primary Key"
+        string username "Unique"
+        string email "Unique"
+        string password
+    }
+
+    PROFILE {
+        int id pk "Primary Key"
+        string usernmae "Unique"
+        string email "Unique"
+        string password
+    }
+
+    EXERCISES {
+        image image
+        string text
+    }
+
+    COOK {
+        image image
+        string text
+    }
+
+    EXERCISES_POST {
+        int id pk "Primary Key"
+        string text "Text"
+        string tag "Tag_Name"
+    }
+
+    COOK_POST {
+    int id pk "Primary Key"
+    string text "Text"
+    string tag "Tag_Name"
+    }
+```
