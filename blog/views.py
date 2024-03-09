@@ -5,7 +5,7 @@ from .forms import CommentForm
 
 def blog_list(request):
     posts = Post.objects.all()
-    return render(request, "blog/blog_list.html", {"posts": posts})
+    return render(request, "blog/index.html", {"posts": posts})
 
 
 def blog_detail(request, pk):
@@ -18,7 +18,7 @@ def blog_detail(request, pk):
             message = form.cleaned_data["message"]
             c = Comment.objects.create(author=author, message=message, post=post)
             c.save()
-    return render(request, "blog/blog_detail.html", {"post": post, "form": form})
+    return render(request, "blog/single-post.html", {"post": post, "form": form})
 
 
 def blog_create(request):
