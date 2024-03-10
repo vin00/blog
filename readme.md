@@ -36,11 +36,18 @@ gantt
 erDiagram
     MAIN ||--o{ EXERCISES : "contains"
     MAIN ||--o{ COOK : "contains"
-    EXERCISES ||--o{ EXERCISES_POST : "places"
-    COOK ||--o{ COOK_POST : "places"
-    USER ||--o{ EXERCISES_POST : "write"
-    USER ||--o{ COOK_POST : "write"
+    MAIN ||--o{ USER : "login"
+    EXERCISES ||--o{ BLOG : "places"
+    COOK ||--o{ BLOG : "places"
+    USER ||--o{ BLOG : "watch"
+    USER ||--o{ BLOG_CREATE : "write"
     USER ||--|| PROFILE : "onws"
+    USER ||--o{ CALENDER : "is"
+    CALENDER ||--o{ BLOG : "" 
+    BLOG_CREATE ||--o{ BLOG : "user"
+    
+
+
 
     USER {
         int id PK "Primary Key"
@@ -65,17 +72,10 @@ erDiagram
         image image
         string text
     }
-
-    EXERCISES_POST {
+    BLOG {
         int id pk "Primary Key"
         string text "Text"
         string tag "Tag_Name"
-    }
-
-    COOK_POST {
-    int id pk "Primary Key"
-    string text "Text"
-    string tag "Tag_Name"
     }
 ```
 

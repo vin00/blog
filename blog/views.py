@@ -18,11 +18,30 @@ def blog_detail(request, pk):
             message = form.cleaned_data["message"]
             c = Comment.objects.create(author=author, message=message, post=post)
             c.save()
-    return render(request, "blog/single-post.html", {"post": post, "form": form})
+    if request.method == "GET":
+        post.view_count += 1
+        post.save()
+    return render(
+        request,
+        "blog/blog_detail.html",
+        {"post": post, "form": form},
+    )
 
 
+@login_required
 def blog_create(request):
-    pass
+    if request.method == "GET":
+        form = PostForm()
+        context = {"form": form}
+        return render(request, "blog/blog_detail.html", context)
+    elif request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save()
+            return redirect("blog_list")
+        else:
+            context = {"form": form}
+            return render(request, "blog/blog_create.html", context)
 
 
 def blog_update(request, pk):
