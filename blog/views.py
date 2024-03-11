@@ -1,11 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Post, Comment, Tag
-from .forms import CommentForm
+from .forms import CommentForm, PostForm
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
 
 
 def blog_list(request):
     posts = Post.objects.all()
-    return render(request, "blog/index.html", {"posts": posts})
+    return render(request, "blog/blog_list.html", {"posts": posts})
 
 
 def blog_detail(request, pk):
@@ -44,12 +46,41 @@ def blog_create(request):
             return render(request, "blog/blog_create.html", context)
 
 
+def tube_comment_delete(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    post_pk = comment.post.pk
+    comment.delete()
+    return redirect("blog_detail", post_pk)
+
+
+@login_required
 def blog_update(request, pk):
-    pass
+    post = get_object_or_404(Post, pk=pk)
+    # 내가 쓴 게시물만 업데이트 가능
+    if post.author != request.user:
+        return redirect("blog_list")
+
+    if request.method == "POST":
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect("blog_detail", pk=post.pk)
+    else:
+        form = PostForm(instance=post)
+        context = {"form": form, "pk": pk}
+        return render(request, "blog/blog_update.html", context)
 
 
+@login_required
 def blog_delete(request, pk):
-    pass
+    post = get_object_or_404(Post, pk=pk)
+    # 내가 쓴 게시물만 삭제 가능
+    if post.author != request.user:
+        return redirect("blog_list")
+
+    if request.method == "POST":
+        post.delete()
+    return redirect("blog_list")
 
 
 def blog_tag(request, tag):
