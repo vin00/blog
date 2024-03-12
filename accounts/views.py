@@ -26,7 +26,7 @@ def user_signup(request):
         user.save()
         user = authenticate(username=username, password=password)
         login(request, user)
-        return redirect("user_profile")
+        return redirect("blog:blog_list")
     else:
         return render(request, "accounts/signup.html")
 
@@ -38,7 +38,7 @@ def user_login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect("user_profile")
+            return redirect("blog:blog_list")
         else:
             return render(request, "accounts/login.html")
     else:
@@ -47,7 +47,7 @@ def user_login(request):
 
 def user_logout(request):
     logout(request)
-    return redirect("user_login")
+    return redirect("main:index")
 
 
 @login_required

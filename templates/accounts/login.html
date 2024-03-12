@@ -1,6 +1,10 @@
-<form method="post">
-    {% csrf_token %}
-    <input type="text" name="username">
-    <input type="password" name="password">
-    <button type="submit">로그인</button>
-</form>
+{% load static %}
+<!-- ======= login Section ======= -->
+<section id="user_login" class="user_login">
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="username">
+        <input type="password" name="password">
+        <button type="submit">로그인</button>
+    </form>
+</section>
