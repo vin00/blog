@@ -405,6 +405,35 @@ section .container {
   color: #fff;
 }
 /*--------------------------------------------------------------
+# Button
+--------------------------------------------------------------*/
+.button-box {
+  background: #18d26e;
+  display: inline;
+  border: 0;
+  padding: 10px 30px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 4px;
+}
+
+.button-box:hover {
+  background: #15bb62;
+}
+form .button-box {
+  background: #18d26e;
+  display: inline;
+  border: 0;
+  padding: 10px 30px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 4px;
+}
+
+form .button-box:hover {
+  background: #15bb62;
+}
+/*--------------------------------------------------------------
 # Exercises
 --------------------------------------------------------------*/
 .exercises .exercises-item {
@@ -865,16 +894,16 @@ section .container {
 }
 
 /*--------------------------------------------------------------
-# Contact
+# user_signup
 --------------------------------------------------------------*/
-.contact .info-box {
+.user_signup .info-box {
   color: #444444;
   padding: 20px;
   width: 100%;
   background: rgba(255, 255, 255, 0.08);
 }
 
-.contact .info-box i.bx {
+.user_signup .info-box i.bx {
   font-size: 24px;
   color: #18d26e;
   border-radius: 50%;
@@ -883,14 +912,14 @@ section .container {
   background: rgba(255, 255, 255, 0.1);
 }
 
-.contact .info-box h3 {
+.user_signup .info-box h3 {
   font-size: 20px;
   color: rgba(255, 255, 255, 0.5);
   font-weight: 700;
   margin: 10px 0 8px 68px;
 }
 
-.contact .info-box p {
+.user_signup .info-box p {
   padding: 0;
   color: #fff;
   line-height: 24px;
@@ -898,12 +927,12 @@ section .container {
   margin: 0 0 0 68px;
 }
 
-.contact .info-box .social-links {
+.user_signup .info-box .social-links {
   margin: 5px 0 0 68px;
   display: flex;
 }
 
-.contact .info-box .social-links a {
+.user_signup .info-box .social-links a {
   font-size: 18px;
   display: inline-block;
   color: #fff;
@@ -912,16 +941,16 @@ section .container {
   transition: 0.3s;
 }
 
-.contact .info-box .social-links a:hover {
+.user_signup .info-box .social-links a:hover {
   color: #18d26e;
 }
 
-.contact .php-email-form {
+.user_signup .php-signup-form {
   padding: 30px;
   background: rgba(255, 255, 255, 0.08);
 }
 
-.contact .php-email-form .error-message {
+.user_signup .php-signup-form .error-message {
   display: none;
   background: rgba(255, 255, 255, 0.08);
   background: #ed3c0d;
@@ -930,11 +959,11 @@ section .container {
   font-weight: 600;
 }
 
-.contact .php-email-form .error-message br+br {
+.user_signup .php-signup-form .error-message br+br {
   margin-top: 25px;
 }
 
-.contact .php-email-form .sent-message {
+.user_signup .php-signup-form .sent-message {
   display: none;
   background: rgba(255, 255, 255, 0.08);
   background: #18d26e;
@@ -943,14 +972,14 @@ section .container {
   font-weight: 600;
 }
 
-.contact .php-email-form .loading {
+.user_signup .php-signup-form .loading {
   display: none;
   background: rgba(255, 255, 255, 0.08);
   text-align: center;
   padding: 15px;
 }
 
-.contact .php-email-form .loading:before {
+.user_signup .php-signup-form .loading:before {
   content: "";
   display: inline-block;
   border-radius: 50%;
@@ -962,8 +991,8 @@ section .container {
   animation: animate-loading 1s linear infinite;
 }
 
-.contact .php-email-form input,
-.contact .php-email-form textarea {
+.user_signup .php-signup-form input,
+.user_signup .php-signup-form textarea {
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;
@@ -973,32 +1002,32 @@ section .container {
   color: #fff;
 }
 
-.contact .php-email-form input:focus,
-.contact .php-email-form textarea:focus {
+.user_signup .php-signup-form input:focus,
+.user_signup .php-signup-form textarea:focus {
   background-color: rgba(255, 255, 255, 0.11);
 }
 
-.contact .php-email-form input::-moz-placeholder,
-.contact .php-email-form textarea::-moz-placeholder {
+.user_signup .php-signup-form input::-moz-placeholder,
+.user_signup .php-signup-form textarea::-moz-placeholder {
   color: rgba(255, 255, 255, 0.3);
   opacity: 1;
 }
 
-.contact .php-email-form input::placeholder,
-.contact .php-email-form textarea::placeholder {
+.user_signup .php-signup-form input::placeholder,
+.user_signup .php-signup-form textarea::placeholder {
   color: rgba(255, 255, 255, 0.3);
   opacity: 1;
 }
 
-.contact .php-email-form input {
+.user_signup .php-signup-form input {
   padding: 10px 15px;
 }
 
-.contact .php-email-form textarea {
+.user_signup .php-signup-form textarea {
   padding: 12px 15px;
 }
 
-.contact .php-email-form button[type=submit] {
+.user_signup .php-signup-form button[type=submit] {
   background: #18d26e;
   border: 0;
   padding: 10px 30px;
@@ -1007,7 +1036,7 @@ section .container {
   border-radius: 4px;
 }
 
-.contact .php-email-form button[type=submit]:hover {
+.user_signup .php-signup-form button[type=submit]:hover {
   background: #15bb62;
 }
 
@@ -1052,3 +1081,4 @@ section .container {
 .credits a:hover {
   color: #fff;
 }
+

@@ -46,11 +46,16 @@ def blog_create(request):
             return render(request, "blog/blog_create.html", context)
 
 
-def tube_comment_delete(request, pk):
+@login_required
+def blog_comment_delete(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     post_pk = comment.post.pk
-    comment.delete()
-    return redirect("blog_detail", post_pk)
+    # 내가 쓴 게시물만 업데이트 가능
+    if comment.author != request.user:
+        return redirect("blog:blog_detil.html")
+    else:
+        comment.delete()
+        return redirect("blog:blog_detail", post_pk)
 
 
 @login_required
@@ -58,13 +63,13 @@ def blog_update(request, pk):
     post = get_object_or_404(Post, pk=pk)
     # 내가 쓴 게시물만 업데이트 가능
     if post.author != request.user:
-        return redirect("blog_list")
+        return redirect("blog:blog_list")
 
     if request.method == "POST":
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
             form.save()
-            return redirect("blog_detail", pk=post.pk)
+            return redirect("blog:blog_detail", pk=post.pk)
     else:
         form = PostForm(instance=post)
         context = {"form": form, "pk": pk}
@@ -76,11 +81,11 @@ def blog_delete(request, pk):
     post = get_object_or_404(Post, pk=pk)
     # 내가 쓴 게시물만 삭제 가능
     if post.author != request.user:
-        return redirect("blog_list")
+        return redirect("blog:blog_list")
 
     if request.method == "POST":
         post.delete()
-    return redirect("blog_list")
+    return redirect("blog:blog_list")
 
 
 def blog_tag(request, tag):

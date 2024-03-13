@@ -4,6 +4,21 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
+
+
+def user_login(request):
+    if request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect("blog:blog_list")
+        else:
+            return render(request, "accounts/login.html")
+    else:
+        return render(request, "accounts/login.html")
 
 
 def user_signup(request):
@@ -21,26 +36,11 @@ def user_signup(request):
         if email and User.objects.filter(email=email).exists():
             return HttpResponse("이메일이 이미 있습니다.")
 
-        # create_user를 사용하여야 암호화된다.
         user = User.objects.create_user(username, email, password)
         user.save()
         user = authenticate(username=username, password=password)
         login(request, user)
         return redirect("blog:blog_list")
-    else:
-        return render(request, "accounts/signup.html")
-
-
-def user_login(request):
-    if request.method == "POST":
-        username = request.POST["username"]
-        password = request.POST["password"]
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect("blog:blog_list")
-        else:
-            return render(request, "accounts/login.html")
     else:
         return render(request, "accounts/login.html")
 
@@ -52,4 +52,4 @@ def user_logout(request):
 
 @login_required
 def user_profile(request):
-    return render(request, "accounts/profile.html", {"user": request.user})
+    return render(request, "accounts/login.html", {"user": request.user})

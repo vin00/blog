@@ -623,6 +623,77 @@ section {
 }
 
 /*--------------------------------------------------------------
+# exercises Details
+--------------------------------------------------------------*/
+.exercises-details {
+  padding-top: 40px;
+  background: rgba(#000, .8);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow-y: auto;
+
+  .container {
+    padding-top: 20px;
+    padding-bottom: 40px;
+  }
+
+  .exercises-title {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  .exercises-info {
+    padding-top: 45px;
+
+    h3 {
+      font-size: 22px;
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      font-size: 15px;
+
+      li +li {
+        margin-top: 10px;
+      }
+    }
+    
+    p {
+      font-size: 15px;
+      padding: 15px 0 0 0;
+    }
+
+    @media (max-width: 992px) {
+      padding-top: 20px;
+    }
+  }
+
+  .swiper-pagination {
+    margin-top: 20px;
+    position: relative;
+  
+    .swiper-pagination-bullet {
+      width: 12px;
+      height: 12px;
+      opacity: 1;
+      background-color: rgba(#fff, .3);
+    }
+  
+    .swiper-pagination-bullet-active {
+      background-color: $primary;
+    }
+  }
+
+}
+
+/*--------------------------------------------------------------
 # cook
 --------------------------------------------------------------*/
 .cook {
@@ -860,4 +931,147 @@ section {
     }
   }
 
+}
+
+/*--------------------------------------------------------------
+# user_signup
+--------------------------------------------------------------*/
+.user_signup {
+
+  .info-box {
+    color: $default;
+    padding: 20px;
+    width: 100%;
+    background: rgba(#fff, .08);
+
+    i.bx {
+      font-size: 24px;
+      color: $primary;
+      border-radius: 50%;
+      padding: 14px;
+      float: left;
+      background: rgba(#fff, .1);
+    }
+
+    h3 {
+      font-size: 20px;
+      color: rgba(#fff, .5);
+      font-weight: 700;
+      margin: 10px 0 8px 68px;
+    }
+
+    p {
+      padding: 0;
+      color: #fff;
+      line-height: 24px;
+      font-size: 14px;
+      margin: 0 0 0 68px;
+    }
+
+    .social-links {
+      margin: 5px 0 0 68px;
+      display: flex;
+      a {
+        font-size: 18px;
+        display: inline-block;
+        color: #fff;
+        line-height: 1;
+        margin-right: 12px;
+        transition: 0.3s;
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
+
+  }
+
+  .php-email-form {
+    padding: 30px;
+    background: rgba(#fff, .08);
+
+    .error-message {
+      display: none;
+      background: rgba(#fff, .08);
+      background: #ed3c0d;
+      text-align: left;
+      padding: 15px;
+      font-weight: 600;
+      & br + br {
+        margin-top: 25px;
+      }
+    }
+    
+    .sent-message {
+      display: none;
+      background: rgba(#fff, .08);
+      background: #18d26e;
+      text-align: center;
+      padding: 15px;
+      font-weight: 600;
+    }
+  
+    .loading {
+      display: none;
+      background: rgba(#fff, .08);
+      text-align: center;
+      padding: 15px;
+  
+      &:before {
+        content: "";
+        display: inline-block;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        margin: 0 10px -6px 0;
+        border: 3px solid #18d26e;
+        border-top-color: #eee;
+        animation: animate-loading 1s linear infinite;
+      }
+  
+    }
+
+    input, textarea {
+      border-radius: 0;
+      box-shadow: none;
+      font-size: 14px;
+      background: rgba(#fff, .08);
+      border: 0;
+      transition: 0.3s;
+      color: #fff;
+      &:focus {
+        background-color: rgba(#fff, .11);
+      }
+      &::placeholder {
+        color: rgba(#fff, .3);
+        opacity: 1;
+      }
+    }
+
+    input {
+      padding: 10px 15px;
+    }
+
+    textarea {
+      padding: 12px 15px;
+    }
+
+    button[type="submit"] {
+      background: $primary;
+      border: 0;
+      padding: 10px 30px;
+      color: #fff;
+      transition: 0.4s;
+      border-radius: 4px;
+      &:hover {
+        background: darken($primary, 5);
+      }
+    }
+  
+  }
+  
+  @keyframes animate-loading {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 }
