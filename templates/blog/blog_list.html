@@ -3,18 +3,18 @@
 {% load static %}
 <!-- ======= Header ======= -->
 <header id="header">
-  <div class="container">
-      <h2>당신의 <span>루틴은?</span></h2>
-      <nav id="navbar" class="navbar">
-          <ul>
-          <li><a class="nav-link active" href="#header">Home</a></li>
-          <li><a class="nav-link" href="{% url 'accounts:user_login' %}">User</a></li>
-          <li><a class="nav-link scrollto" href="#exercises">Exercises</a></li>
-          <li><a class="nav-link scrollto" href="#cook">Cook</a></li>
-          </ul>
-          <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-  </div>
+    <div class="container">
+        <h2>당신의 <span>루틴은?</span></h2>
+        <nav id="navbar" class="navbar">
+            <ul>
+            <li><a class="nav-link active" href="#header">Home</a></li>
+            <li><a class="nav-link" href="{% url 'accounts:user_login' %}">User</a></li>
+            <li><a class="nav-link scrollto" href="#exercises">Exercises</a></li>
+            <li><a class="nav-link scrollto" href="#cook">Cook</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+    </div>
 </header><!-- End Header -->
 <!-- ======= Exercises Section ======= -->
 <section id="exercises" class="exercises scrollto">
@@ -60,157 +60,49 @@
 
     </div>
 </section><!-- End Exercises Section -->
-  
-  <!-- ======= cook Section ======= -->
-  <section id="cook" class="cook scrollto">
+
+<!-- ======= cook Section ======= -->
+<section id="cook" class="cook scrollto">
     <div class="container">
-  
-      <div class="section-title">
-        <h2>cook</h2>
-        <p>My Works</p>
-      </div>
-  
-      <div class="row">
-        <div class="col-lg-12 d-flex justify-content-center">
-          <ul id="cook-flters">
-            <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-app">식단</li>
-            <li data-filter=".filter-card">레시피</li>
-            <li data-filter=".filter-web">맛집</li>
-          </ul>
+
+        <div class="section-title">
+            <h2>cook</h2>
+            <p>My Works</p>
         </div>
-      </div>
-  
-      <div class="row cook-container">
-  
-        <div class="col-lg-4 col-md-6 cook-item filter-app">
-          <div class="cook-wrap">
-            <img src="{% static 'img/cook/cook-1.jpg' %}" class="img-fluid" alt="">
-            <div class="cook-info">
-              <h4>App 1</h4>
-              <p>App</p>
-              <div class="cook-links">
-                <a href="{% static 'img/cook/cook-1.jpg' %}" data-gallery="cookGallery" class="cook-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                <a href="" data-gallery="cookDetailsGallery" data-glightbox="type: external" class="cook-details-lightbox" title="cook Details"><i class="bx bx-link"></i></a>
-              </div>
+
+        <div class="row">
+            <div class="col-lg-12 d-flex justify-content-center">
+                <ul id="cook-flters">
+                    <li data-filter="*" class="filter-active">All</li>
+                    <li data-filter=".filter-app">식단</li>
+                    <li data-filter=".filter-card">레시피</li>
+                    <li data-filter=".filter-web">맛집</li>
+                </ul>
             </div>
-          </div>
         </div>
-  
-        <div class="col-lg-4 col-md-6 cook-item filter-web">
-          <div class="cook-wrap">
-            <img src="{% static 'img/cook/cook-2.jpg' %}" class="img-fluid" alt="">
-            <div class="cook-info">
-              <h4>Web 3</h4>
-              <p>Web</p>
-              <div class="cook-links">
-                <a href="{% static 'img/cook/cook-2.jpg' %}" data-gallery="cookGallery" class="cook-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="cook-details.html" data-gallery="cookDetailsGallery" data-glightbox="type: external" class="cook-details-lightbox" title="cook Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
+
+        <div class="row cook-container">
+            {% for post in posts %}
+                <div class="col-lg-4 col-md-6 exercises-item filter-app">
+                    <div class="exercises-wrap">
+                        {% if post.thumbnail_image %}
+                        <img src="{{ post.thumbnail_image.url }}" class="img-fluid" alt="">
+                        {% endif %}
+                        <div class="exercises-info">
+                            <h4>{{ post.title }}</h4>
+                            {% for tag in post.tags.all %}
+                                <p>{{ post.tag }}</p>
+                            {% endfor %}
+                            <div class="exercises-links">
+                                <a href="{{ post.thumbnail_image.url }}" data-gallery="exercisesGallery" class="exercises-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
+                                <a href="{% url 'blog:blog_detail' pk=post.pk %}" data-gallery="exercisesDetailsGallery" data-glightbox="type: external" class="exercises-details-lightbox" title="blog Detail"><i class="bx bx-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
-  
-        <div class="col-lg-4 col-md-6 cook-item filter-app">
-          <div class="cook-wrap">
-            <img src="{% static 'img/cook/cook-3.jpg' %}" class="img-fluid" alt="">
-            <div class="cook-info">
-              <h4>App 2</h4>
-              <p>App</p>
-              <div class="cook-links">
-                <a href="{% static 'img/cook/cook-3.jpg' %}" data-gallery="cookGallery" class="cook-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
-                <a href="cook-details.html" data-gallery="cookDetailsGallery" data-glightbox="type: external" class="cook-details-lightbox" title="cook Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-  
-        <div class="col-lg-4 col-md-6 cook-item filter-card">
-          <div class="cook-wrap">
-            <img src="assets/img/cook/cook-4.jpg" class="img-fluid" alt="">
-            <div class="cook-info">
-              <h4>Card 2</h4>
-              <p>Card</p>
-              <div class="cook-links">
-                <a href="assets/img/cook/cook-4.jpg" data-gallery="cookGallery" class="cook-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
-                <a href="cook-details.html" data-gallery="cookDetailsGallery" data-glightbox="type: external" class="cook-details-lightbox" title="cook Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-  
-        <div class="col-lg-4 col-md-6 cook-item filter-web">
-          <div class="cook-wrap">
-            <img src="assets/img/cook/cook-5.jpg" class="img-fluid" alt="">
-            <div class="cook-info">
-              <h4>Web 2</h4>
-              <p>Web</p>
-              <div class="cook-links">
-                <a href="assets/img/cook/cook-5.jpg" data-gallery="cookGallery" class="cook-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
-                <a href="cook-details.html" data-gallery="cookDetailsGallery" data-glightbox="type: external" class="cook-details-lightbox" title="cook Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-  
-        <div class="col-lg-4 col-md-6 cook-item filter-app">
-          <div class="cook-wrap">
-            <img src="assets/img/cook/cook-6.jpg" class="img-fluid" alt="">
-            <div class="cook-info">
-              <h4>App 3</h4>
-              <p>App</p>
-              <div class="cook-links">
-                <a href="assets/img/cook/cook-6.jpg" data-gallery="cookGallery" class="cook-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
-                <a href="cook-details.html" data-gallery="cookDetailsGallery" data-glightbox="type: external" class="cook-details-lightbox" title="cook Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-  
-        <div class="col-lg-4 col-md-6 cook-item filter-card">
-          <div class="cook-wrap">
-            <img src="assets/img/cook/cook-7.jpg" class="img-fluid" alt="">
-            <div class="cook-info">
-              <h4>Card 1</h4>
-              <p>Card</p>
-              <div class="cook-links">
-                <a href="assets/img/cook/cook-7.jpg" data-gallery="cookGallery" class="cook-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
-                <a href="cook-details.html" data-gallery="cookDetailsGallery" data-glightbox="type: external" class="cook-details-lightbox" title="cook Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-  
-        <div class="col-lg-4 col-md-6 cook-item filter-card">
-          <div class="cook-wrap">
-            <img src="assets/img/cook/cook-8.jpg" class="img-fluid" alt="">
-            <div class="cook-info">
-              <h4>Card 3</h4>
-              <p>Card</p>
-              <div class="cook-links">
-                <a href="assets/img/cook/cook-8.jpg" data-gallery="cookGallery" class="cook-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
-                <a href="cook-details.html" data-gallery="cookDetailsGallery" data-glightbox="type: external" class="cook-details-lightbox" title="cook Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-  
-        <div class="col-lg-4 col-md-6 cook-item filter-web">
-          <div class="cook-wrap">
-            <img src="assets/img/cook/cook-9.jpg" class="img-fluid" alt="">
-            <div class="cook-info">
-              <h4>Web 3</h4>
-              <p>Web</p>
-              <div class="cook-links">
-                <a href="assets/img/cook/cook-9.jpg" data-gallery="cookGallery" class="cook-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="cook-details.html" data-gallery="cookDetailsGallery" data-glightbox="type: external" class="cook-details-lightbox" title="cook Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-  
-      </div>
-  
+
     </div>
-  </section><!-- End cook Section -->
+</section><!-- End cook Section -->
 {% endblock %}
