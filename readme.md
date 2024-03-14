@@ -236,6 +236,12 @@ erDiagram
  ┃ ┗ 📜__init__.py
 ```
 ## 5. 에러
+- 에러
+
+| 화면 | 해결방법 |
+|------|------|
+|<img width="719" alt="image" src="https://github.com/vin00/blog/assets/155034374/53556aae-1446-4426-8b2c-025463ddf248"> |accounts -> urls.py -> app_name="aocuunts" 설정, templats -> index.hrml -> {% url 'accounts:user_logout' %}으로 변경으로 해결|
+| <img width="753" alt="image" src="https://github.com/vin00/blog/assets/155034374/9fcf82e6-d2ed-4665-9e06-19f365354e45"> | settings.py 마지막에 ``` python X_FRAME_OPTIONS = "ALLOWALL"\n XS_SHARING_ALLOWED_METHODS = ["POST", "GET", "OPTIONS", "PUT", "DELETE"] ``` 추가하여 해결|
 
 ## 6. 개발하며 느낌점
 
