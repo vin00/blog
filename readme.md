@@ -235,6 +235,20 @@ erDiagram
  ┃ ┣ 📜wsgi.py
  ┃ ┗ 📜__init__.py
 ```
+
+* 화면 구현
+
+| 화면 | 위치 |
+|------|------|
+|<img width="1440" alt="image" src="https://github.com/vin00/blog/assets/155034374/4b62b96a-a4d1-4bca-a79b-78ab22ced7a6">|메인화면|
+|<img width="1440" alt="image" src="https://github.com/vin00/blog/assets/155034374/ef7f1684-9c3f-4bd8-a90e-127ebc8486ba">|로그인화면|
+|<img width="1440" alt="image" src="https://github.com/vin00/blog/assets/155034374/478af25f-4dec-451f-bc42-e587c7ad0c02">|회원가입|
+|<img width="1440" alt="image" src="https://github.com/vin00/blog/assets/155034374/5b251532-99d3-44c4-a90e-186a4ca05aab">|프로필|
+|<img width="1440" alt="image" src="https://github.com/vin00/blog/assets/155034374/72abbddb-c09e-4759-9de1-7a82ecae5c04">|블로그메인화면|
+|<img width="1440" alt="image" src="https://github.com/vin00/blog/assets/155034374/80f3cd9f-21b8-4fdf-93a0-f1749e0bd272">|블로그리스트화면|
+|<img width="1440" alt="image" src="https://github.com/vin00/blog/assets/155034374/eb519476-b4c1-4bb1-b177-a756546bd4e8">|포스트상세페이지|
+
+
 ## 5. 에러
 - 에러
 
